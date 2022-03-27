@@ -15,12 +15,12 @@ public class Node {
         if(comp == 0){
             return counter;
         } else if(comp <= -1){
-            if(leftNode == null){
+            if(rightNode == null){
                 return counter;
             }
             return rightNode.compare(search, counter+1);
         } else {
-            if(rightNode == null){
+            if(leftNode == null){
                 return counter;
             }
             return leftNode.compare(search, counter+1);
