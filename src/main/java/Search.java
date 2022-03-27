@@ -68,26 +68,18 @@ public class Search {
         double[][] w = new double[n+2][n+2];
         int[][] root = new int[n+2][n+2];
         double[][] e = new double[n+2][n+2];
-
         for(int i=0;i<=n;i++){
-            // Inicializacia hodnot
-            // jedna sa o pripady kedy nemame ziadne kluce ki a existuju len dummy hodnoty di s pravdepodobnostou qi
-            e[i+1][i] = q.get(i); // cost
-            w[i+1][i] = q.get(i); // suma pravdepodobnosti, ale v prvom pripade bez klucov mame len pravdepodobnost neusmesneho hladania
+            e[i+1][i] = q.get(i);
+            w[i+1][i] = q.get(i);
         }
         for(int k=1;k<=n;k++){
             for(int i=1;i<=n-k+1;i++){
                 int j = i+k-1;
-                e[i][j] = Integer.MAX_VALUE; //e //ocakavana cena tohto podstromu
-                w[i][j] = w[i][j-1] + p.get(j) + q.get(j); // pravdepodobnost predosleho + aktualne
-                // Prechadzame vsetky moznosti ako koren stromu a hladame tu s minimalnou cenou
+                e[i][j] = Integer.MAX_VALUE;
+                w[i][j] = w[i][j-1] + p.get(j) + q.get(j);
                 for(int r=i;r<=j;r++){
-                    // skusime vsetky klue ako koren medzi i <= r <= j
-                    // vypocitame cenu podstromu pri zbolenom roote r
-                    // cena sa sklada z ceny laveho / praveho podstromu a hodnoty aktualneho kluca
                     double t = e[i][r-1] + e[r+1][j] + w[i][j];
                     if(t < e[i][j]){
-                        // Minimalnu cenu ulozime a zapamatame si kto bol koren pre tento optimalnz podstrom
                         e[i][j] = t;
                         root[i][j] = r;
                     }
@@ -97,17 +89,14 @@ public class Search {
         return root;
     }
 
-
     private BinarySearchTree constructOptimalBinarySearchTree(int[][] root, int lowerKey,int higherKey){
         int value = root[lowerKey][higherKey];
         Node node = new Node(this.dataHolder.getOccurrenceDictionary().keySet().toArray()[value-1].toString());
-        // Construct left sub-tree
         if(lowerKey<=value-1){
             node.setLeftNode(constructOptimalBinarySearchTree(root, lowerKey, value-1).getRoot());
         }else{
             node.setLeftNode(null);
         }
-        // Construct right sub-tree
         if(higherKey >=value+1){
             node.setRightNode(constructOptimalBinarySearchTree(root,     value+1, higherKey).getRoot());
         }else{

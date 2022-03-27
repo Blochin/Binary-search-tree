@@ -5,6 +5,7 @@ public class Main {
         DataHolder dataHolder = new DataHolder("src/main/resources/dictionary.txt",50000);
         Search search = new Search(dataHolder);
         search.getBinarySearchTree().print();
+
         while (true){
             Scanner sc= new Scanner(System.in);
             System.out.print("Enter a string: ");

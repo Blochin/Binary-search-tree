@@ -9,23 +9,22 @@ public class Node {
         this.value = value;
     }
 
-    public int compare(String search, int idx) {
-
+    public int compare(String search, int counter) {
         int comp = value.compareTo(search);
-        System.out.println("Key: "+ value + " Search: "+search+" idx: " +idx+ " comp: "+comp);
+        System.out.println("Key: "+ value + " Search: "+search+" counter: " +counter);
         if(comp == 0)
         {
-            return idx;
+            return counter;
         } else if(comp <= -1){
             if(leftNode == null){
-                return idx;
+                return counter;
             }
-            return rightNode.compare(search, idx+1);
+            return rightNode.compare(search, counter+1);
         } else {
             if(rightNode == null){
-                return idx;
+                return counter;
             }
-            return leftNode.compare(search, idx+1);
+            return leftNode.compare(search, counter+1);
         }
     }
 

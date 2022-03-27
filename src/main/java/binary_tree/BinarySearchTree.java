@@ -5,6 +5,9 @@ import java.io.PrintStream;
 public class BinarySearchTree {
     private Node root;
 
+    public BinarySearchTree(Node node){
+        this.root = node;
+    }
 
     public void traversePreOrder(StringBuilder sb, String padding, String pointer, Node node) {
         if (node != null) {
@@ -26,10 +29,6 @@ public class BinarySearchTree {
         StringBuilder sb = new StringBuilder();
         traversePreOrder(sb," "," ", this.root);
         System.out.print(sb.toString());
-    }
-
-    public BinarySearchTree(Node node){
-        this.root = node;
     }
 
     public Node getRoot() {
