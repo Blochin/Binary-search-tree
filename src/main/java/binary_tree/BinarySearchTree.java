@@ -1,6 +1,5 @@
 package binary_tree;
 
-import java.io.PrintStream;
 
 public class BinarySearchTree {
     private Node root;
@@ -17,11 +16,11 @@ public class BinarySearchTree {
             sb.append("\n");
 
             String paddingForBoth = padding + "│  ";
-            String pointerForRight = "└──";
-            String pointerForLeft = (node.getRightNode() != null) ? "├──" : "└──";
+            String pointerForLeft = "└──";
+            String pointerForRight = (node.getLeftNode() != null) ? "├──" : "└──";
 
-            traversePreOrder(sb, paddingForBoth, pointerForLeft, node.getLeftNode());
             traversePreOrder(sb, paddingForBoth, pointerForRight, node.getRightNode());
+            traversePreOrder(sb, paddingForBoth, pointerForLeft, node.getLeftNode());
         }
     }
 

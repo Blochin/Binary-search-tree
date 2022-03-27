@@ -12,8 +12,7 @@ public class Node {
     public int compare(String search, int counter) {
         int comp = value.compareTo(search);
         System.out.println("Key: "+ value + " Search: "+search+" counter: " +counter);
-        if(comp == 0)
-        {
+        if(comp == 0){
             return counter;
         } else if(comp <= -1){
             if(leftNode == null){
