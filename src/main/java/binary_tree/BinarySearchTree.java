@@ -6,15 +6,6 @@ public class BinarySearchTree {
     private Node root;
 
 
-    public void traversePreOrder(StringBuilder sb, Node node) {
-        if (node != null) {
-            sb.append(node.getValue());
-            sb.append("\n");
-            traversePreOrder(sb, node.getLeftNode());
-            traversePreOrder(sb, node.getRightNode());
-        }
-    }
-
     public void traversePreOrder(StringBuilder sb, String padding, String pointer, Node node) {
         if (node != null) {
             sb.append(padding);
@@ -31,10 +22,10 @@ public class BinarySearchTree {
         }
     }
 
-    public void print(PrintStream os, Node node) {
+    public void print() {
         StringBuilder sb = new StringBuilder();
-        traversePreOrder(sb," "," ", node);
-        os.print(sb.toString());
+        traversePreOrder(sb," "," ", this.root);
+        System.out.print(sb.toString());
     }
 
     public BinarySearchTree(Node node){

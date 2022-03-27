@@ -9,7 +9,7 @@ public class Node {
         this.value = value;
     }
 
-    private int compare(String search, int idx) {
+    public int compare(String search, int idx) {
 
         int comp = value.compareTo(search);
         System.out.println("Key: "+ value + " Search: "+search+" idx: " +idx+ " comp: "+comp);
@@ -27,10 +27,6 @@ public class Node {
             }
             return leftNode.compare(search, idx+1);
         }
-    }
-
-    public int compare(String search){
-        return compare(search,1);
     }
 
     public String  getValue() {
